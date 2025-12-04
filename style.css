@@ -66,6 +66,27 @@ html {
     letter-spacing: 0.3em;
 }
 
+.header-menu li {
+    position: relative;
+}
+
+.header-menu li::after {
+ content: "";
+    position: absolute;
+    bottom: 0;  
+    left: 50%; 
+    width: 80%;  
+    height: 2px;  
+    background-color: #000; 
+    margin-left: -43%;  
+    transform: scaleX(0);  
+    transition: transform 0.3s ease;  
+}
+
+.header-menu li:hover::after {
+    transform: scaleX(1);  
+}
+
 .header-menu a {
     text-decoration: none;
     color: #000000;
