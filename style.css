@@ -650,7 +650,7 @@ small {
         margin-top: 70px;
     }
 
-    .footer-contacts a {
+    .footer-contacts a, .footer-contacts>span {
         text-align: center;
     }
 
