@@ -71,6 +71,7 @@ html {
     gap: 84px;
     justify-content: end;
     align-items: center;
+    position: relative;
 }
 
 .header-inner>a {
@@ -143,16 +144,41 @@ h1 {
 }
 
 @media (max-width: 768px) {
+    .header-menu li::after {
+        display: none !important;
+    }
+
     .header-menu {
-        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: #ffffff;
+        padding: 20px 30px;
+        flex-direction: column;
+        gap: 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        z-index: 100;
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .header-menu.header-menu--open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
     }
 
     .burger {
         display: block;
         margin-left: 40px;
+        position: relative;
+        z-index: 101;
     }
 
     .header-inner {
+        position: relative;
         gap: 0;
     }
 
@@ -168,6 +194,7 @@ h1 {
 }
 
 @media (max-width: 320px) {
+
     .first-screen {
         height: 500px;
         min-height: auto;
@@ -181,9 +208,64 @@ h1 {
         font-size: 3rem;
     }
 
+    .header-inner {
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        position: relative;
+    }
+
+    .search {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;   
+        margin-right: 8px;  
+        border: none;
+        background: none;
+        cursor: pointer;
+    }
+
+    .search img {
+        display: block;
+    }
+
     .burger {
         margin-left: 20px;
+        display: block;
+        border: none;
+        background: none;
+        cursor: pointer;
     }
+
+    .header-menu {
+        position: fixed;
+        inset: 0;
+        background: #ffffff;
+        flex-direction: column;
+        gap: 30px;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition: opacity .3s ease, transform .3s ease;
+        z-index: 100;
+    }
+
+    .header-menu.header-menu--open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+}
+
+body.no-scroll {
+    overflow: hidden;
 }
 
 /* ---------------------Blog--------------------- */

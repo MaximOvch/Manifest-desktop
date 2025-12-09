@@ -44,7 +44,7 @@
                     <button class="search">
                         <img src="images/search.svg" alt="">
                     </button>
-                    <button class="burger">
+                    <button class="burger" aria-label="Open menu">
                         <img src="images/burger.svg" alt="">
                     </button>
                 </div>
@@ -183,7 +183,8 @@
                             <p class="popular-text">Is it possible to create a delightful user experience without
                                 following
                                 best UX practices?</p>
-                            <p class="extra">UI has to make a huge visual difference between warning, an alert and a success.</p>
+                            <p class="extra">UI has to make a huge visual difference between warning, an alert and a
+                                success.</p>
                         </li>
                     </ul>
                     <a href="" class="load-more lato-bold ">Load More</a>
@@ -254,6 +255,24 @@
             </div>
         </footer>
     </div>
+    <script>
+        const burger = document.querySelector('.burger');
+        const menu = document.querySelector('.header-menu');
+
+        if (burger && menu) {
+            burger.addEventListener('click', () => {
+                menu.classList.toggle('header-menu--open');
+                document.body.classList.toggle('no-scroll'); // для блокировки скролла на мобиле
+            });
+
+            menu.addEventListener('click', (event) => {
+                if (event.target.tagName === 'A') {
+                    menu.classList.remove('header-menu--open');
+                    document.body.classList.remove('no-scroll');
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>
